@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Album;
 use App\Song;
 
-
-class AlbumController extends Controller
+class SongController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +15,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-      // Recupero tutti gli album
-      $albums = Album::all();
-
-      // Ritorno la view con la variabile albums
-      return view('album.home', compact('albums'));
+        //
     }
 
     /**
@@ -51,11 +45,13 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Album $album)
+    public function show(Song $song)
     {
-      dd($album->songs->tags);
-      // Ritorno la view con la variabile album
-      return view('album.details', compact('album'));
+
+      dd($song);
+
+      return view('song.show', compact('song'));
+        //
     }
 
     /**
