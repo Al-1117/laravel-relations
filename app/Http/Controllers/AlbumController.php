@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Album;
-use App\Song;
 
 
 class AlbumController extends Controller
@@ -53,7 +52,8 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-      dd($album->songs->tags);
+      // $album_song= $album->songs;
+      // dd($album_song);
       // Ritorno la view con la variabile album
       return view('album.details', compact('album'));
     }
