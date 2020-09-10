@@ -19,5 +19,9 @@ class Song extends Model
     return $this->belongsTo('App\Album');
   }
 
+  public function tags() {
+    return $this->belongsToMany('App\Tag');
+  }
+
 
 }
