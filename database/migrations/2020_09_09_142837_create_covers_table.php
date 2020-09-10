@@ -17,6 +17,14 @@ class CreateCoversTable extends Migration
             $table->id();
             $table->string('url');
             $table->timestamps();
+            // Creo la colonna album id
+            $table->unsignedBigInteger('album_id');
+            // Faccio la relazione col la tabella albums
+            $table->foreign('album_id')
+                // Riferimento alla album id
+                  ->references('id')
+                  // Nella tabella albums
+                  ->on('albums');
         });
     }
 

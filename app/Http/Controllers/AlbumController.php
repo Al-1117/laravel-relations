@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Album;
 
+
 class AlbumController extends Controller
 {
     /**
@@ -51,6 +52,7 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
+
       // Ritorno la view con la variabile album
       return view('album.details', compact('album'));
     }
