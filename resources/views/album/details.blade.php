@@ -45,7 +45,7 @@
       <ul>
         {{-- TAGS COLLEGATI ALLE CANZONI --}}
         @foreach ($song->tags as $tag)
-          <li><strong>Tags:</strong> <em>{{$tag->name}}</em></li>
+          <li><strong>Tags:</strong><em>{{$tag->name}}</em></li>
         @endforeach
 
       </ul>
@@ -53,3 +53,5 @@
     </li>
   @endforeach
 </ul>
+
+<h2><a href="{{route('album.index')}}">Torna alla lista degli album</a></h2>

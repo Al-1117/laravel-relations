@@ -23,6 +23,7 @@ class Album extends Model
 
   // collego il model cover
   public function covers(){
+
     return $this->hasOne('App\Cover');
   }
 }

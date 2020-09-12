@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Album;
+use App\Cover;
 
 
 class AlbumController extends Controller
@@ -18,7 +19,6 @@ class AlbumController extends Controller
     {
       // Recupero tutti gli album
       $albums = Album::all();
-
       // Ritorno la view con la variabile albums
       return view('album.home', compact('albums'));
     }
@@ -30,7 +30,8 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+
+      return view('album.create');
     }
 
     /**
@@ -41,7 +42,20 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data_request = $request->all();
+
+      // Creazione e salvataggio del nuovo album
+      $new_album = New Album();
+      // Compilo l'album nuovo con i dati sottomessi dal form
+      $new_album->fill($data_request);
+
+      // Salvo il nuovo album
+      $saved = $new_album->save();
+
+      if ($saved) {
+        return redirect()->route('album.index');
+      }
+
     }
 
     /**
@@ -87,8 +101,16 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Album $album)
     {
-        //
+
+      //
+      $album->covers()->detach();
+      //
+
+
+      $album->delete();
+
+      return redirect()->route('album.home');
     }
 }
